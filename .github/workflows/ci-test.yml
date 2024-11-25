@@ -60,7 +60,16 @@ jobs:
     # NOTE: This name appears in GitHub's Checks API.
     name: playwright
     needs: [yarn_cache]
-    runs-on: blacksmith-4vcpu-ubuntu-2204
+    strategy:
+      matrix:
+        runner: [
+          "ubuntu-latest",
+          "blacksmith-2vcpu-ubuntu-2204",
+          "blacksmith-4vcpu-ubuntu-2204",
+          "blacksmith-8vcpu-ubuntu-2204",
+          "blacksmith-16vcpu-ubuntu-2204"
+        ]
+    runs-on: ${{ matrix.runner }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
