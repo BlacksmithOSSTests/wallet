@@ -21,7 +21,7 @@ jobs:
     name: cloudflare-pages
     # Do not trigger job for dependency update bot.
     if: github.actor != 'renovate[bot]'
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       # In progress comment will be updated with a deploy status.
       - name: Add in progress comment to PR
@@ -46,7 +46,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Set up Node.js 18
-        uses: actions/setup-node@v4
+        uses: useblacksmith/setup-node@v5
         with:
           node-version: '18.x'
           cache: yarn

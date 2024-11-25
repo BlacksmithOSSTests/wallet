@@ -22,7 +22,7 @@ jobs:
   lint:
     # NOTE: This name appears in GitHub's Checks API.
     name: lint
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -32,11 +32,11 @@ jobs:
           # Fetch all history so gitlint can check the relevant commits.
           fetch-depth: '0'
       - name: Set up Python 3
-        uses: actions/setup-python@v4
+        uses: useblacksmith/setup-python@v6
         with:
           python-version: '3.x'
       - name: Set up Node.js 18
-        uses: actions/setup-node@v4
+        uses: useblacksmith/setup-node@v5
         with:
           node-version: '18.x'
           cache: yarn

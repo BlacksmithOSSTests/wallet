@@ -13,7 +13,7 @@ permissions: # Limit secrets.GITHUB_TOKEN permissions
 jobs:
   dump-validators:
     if: github.repository == 'oasisprotocol/wallet'
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - uses: actions/checkout@v4
       - run: bash ./.github/dump_validators.sh
