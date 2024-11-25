@@ -13,11 +13,11 @@ permissions: # Limit secrets.GITHUB_TOKEN permissions
 jobs:
   update-screenshots:
     if: github.repository == 'oasisprotocol/wallet'
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js 18
-        uses: actions/setup-node@v4
+        uses: useblacksmith/setup-node@v5
         with:
           node-version: '18.x'
           cache: yarn

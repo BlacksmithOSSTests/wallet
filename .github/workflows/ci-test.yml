@@ -20,12 +20,12 @@ permissions: {}
 
 jobs:
   yarn_cache:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Set up Node.js 18
-        uses: actions/setup-node@v4
+        uses: useblacksmith/setup-node@v5
         id: yarn-cache
         with:
           node-version: 18
@@ -37,12 +37,12 @@ jobs:
     # NOTE: This name appears in GitHub's Checks API.
     name: jest
     needs: [yarn_cache]
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Set up Node.js 18
-        uses: actions/setup-node@v4
+        uses: useblacksmith/setup-node@v5
         with:
           node-version: '18.x'
           cache: yarn
@@ -60,12 +60,12 @@ jobs:
     # NOTE: This name appears in GitHub's Checks API.
     name: playwright
     needs: [yarn_cache]
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Set up Node.js 18
-        uses: actions/setup-node@v4
+        uses: useblacksmith/setup-node@v5
         with:
           node-version: '18.x'
           cache: yarn
@@ -95,12 +95,12 @@ jobs:
     # NOTE: This name appears in GitHub's Checks API.
     name: cypress
     needs: [yarn_cache]
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Set up Node.js 18
-        uses: actions/setup-node@v4
+        uses: useblacksmith/setup-node@v5
         with:
           node-version: '18.x'
           cache: yarn
@@ -125,7 +125,7 @@ jobs:
     # NOTE: This name appears in GitHub's Checks API.
     name: coverage
     needs: [cypress, jest]
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
